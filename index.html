@@ -40,8 +40,15 @@ body { overflow:hidden; }
   position:fixed; bottom:28px; left:50%; transform:translateX(-50%);
   z-index:1000; color:rgba(255,255,255,.7); font-size:14px; font-weight:500;
   background:rgba(0,0,0,.5); padding:8px 20px; border-radius:20px;
-  backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px); display:flex; align-items:center; gap:4px;
 }
+.page-input {
+  width:32px; background:transparent; border:none; border-bottom:1.5px solid rgba(255,255,255,.5);
+  color:#fff; font-size:14px; font-weight:600; text-align:center; outline:none;
+  font-family:inherit; padding:2px 0;
+}
+.page-input:focus { border-bottom-color:#fff; }
+.page-total { color:rgba(255,255,255,.5); }
 
 /* Slide Types */
 .slide-cover {
@@ -295,31 +302,32 @@ body { overflow:hidden; }
       <div class="card card-blue" style="padding:24px;">
         <div style="font-size:15px;font-weight:700;color:#2563eb;margin-bottom:12px;">PHASE 1 &mdash; Discover</div>
         <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;">시장 분석</div>
-        <div style="font-size:18px;color:#475569;line-height:2;">
-          1. 제품 / 상품 / 서비스 리서치<br>
-          2. PEST 분석<br>
-          3. 경쟁사 분석 (포지셔닝맵 + 벤치마킹)<br>
-          4. 자사 분석 (SWOT)
+        <div style="font-size:18px;line-height:2.2;">
+          <a onclick="goToSlide(5)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='transparent'">1. 제품 / 상품 / 서비스 리서치</a>
+          <a onclick="goToSlide(8)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='transparent'">2. PEST 분석</a>
+          <a onclick="goToSlide(12)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='transparent'">3. 경쟁사 분석 (포지셔닝맵 + 벤치마킹)</a>
+          <a onclick="goToSlide(15)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='transparent'">4. 자사 분석 (SWOT)</a>
         </div>
       </div>
       <!-- Phase 2 -->
       <div class="card card-teal" style="padding:24px;">
         <div style="font-size:15px;font-weight:700;color:#0d9488;margin-bottom:12px;">PHASE 2 &mdash; Define</div>
         <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;">사용자 조사</div>
-        <div style="font-size:18px;color:#475569;line-height:2;">
-          5. 설문조사 (정량 조사)<br>
-          6. 사용자 인터뷰 (정성 조사)<br>
-          7. Research Final Conclusion
+        <div style="font-size:18px;line-height:2.2;">
+          <a onclick="goToSlide(19)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f0fdfa'" onmouseout="this.style.background='transparent'">5. 설문조사 (정량 조사)</a>
+          <a onclick="goToSlide(22)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f0fdfa'" onmouseout="this.style.background='transparent'">6. 사용자 인터뷰 (정성 조사)</a>
+          <a onclick="goToSlide(25)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f0fdfa'" onmouseout="this.style.background='transparent'">7. Research Final Conclusion</a>
         </div>
       </div>
       <!-- Phase 3 -->
       <div class="card card-purple" style="padding:24px;">
         <div style="font-size:15px;font-weight:700;color:#7c3aed;margin-bottom:12px;">PHASE 3 &mdash; Develop</div>
         <div style="font-size:22px;font-weight:800;color:#0f172a;margin-bottom:20px;">구체화</div>
-        <div style="font-size:18px;color:#475569;line-height:2;">
-          8. 페르소나 설정<br>
-          9. 시나리오<br>
-          10. IA / 사이트맵 / 플로우차트
+        <div style="font-size:18px;line-height:2.2;">
+          <a onclick="goToSlide(27)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">고객 여정 지도</a>
+          <a onclick="goToSlide(30)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">8. 페르소나 설정</a>
+          <a onclick="goToSlide(33)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">9. 시나리오</a>
+          <a onclick="goToSlide(35)" style="color:#475569;cursor:pointer;text-decoration:none;display:block;padding:4px 8px;border-radius:8px;transition:background .15s;" onmouseover="this.style.background='#f5f3ff'" onmouseout="this.style.background='transparent'">10. IA / 사이트맵 / 플로우차트</a>
         </div>
       </div>
     </div>
@@ -2151,12 +2159,14 @@ body { overflow:hidden; }
 <!-- Navigation -->
 <button class="nav-arrow prev" id="prevBtn" onclick="changeSlide(-1)">&#9664;</button>
 <button class="nav-arrow next" id="nextBtn" onclick="changeSlide(1)">&#9654;</button>
-<div class="page-indicator" id="pageIndicator">1 / 15</div>
+<div class="page-indicator" id="pageIndicator"><input class="page-input" id="pageInput" type="text" value="1"> <span class="page-total">/ <span id="totalPages">38</span></span></div>
 
 <script>
 let current = 0;
 const slides = document.querySelectorAll('.slide');
 const total = slides.length;
+const pageInput = document.getElementById('pageInput');
+document.getElementById('totalPages').textContent = total;
 
 function updateScale() {
   const sw = window.innerWidth / 1920;
@@ -2168,9 +2178,15 @@ updateScale();
 
 function showSlide(idx) {
   slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-  document.getElementById('pageIndicator').textContent = (idx + 1) + ' / ' + total;
+  pageInput.value = idx + 1;
   document.getElementById('prevBtn').disabled = idx === 0;
   document.getElementById('nextBtn').disabled = idx === total - 1;
+}
+
+function goToSlide(page) {
+  const idx = Math.max(0, Math.min(total - 1, page - 1));
+  current = idx;
+  showSlide(current);
 }
 
 function changeSlide(dir) {
@@ -2178,7 +2194,14 @@ function changeSlide(dir) {
   if (next >= 0 && next < total) { current = next; showSlide(current); }
 }
 
+pageInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') { e.preventDefault(); goToSlide(parseInt(this.value) || 1); this.blur(); }
+});
+pageInput.addEventListener('blur', function() { goToSlide(parseInt(this.value) || 1); });
+pageInput.addEventListener('focus', function() { this.select(); });
+
 document.addEventListener('keydown', e => {
+  if (document.activeElement === pageInput) return;
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
 });
