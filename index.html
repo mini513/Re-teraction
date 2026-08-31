@@ -81,13 +81,17 @@ body { overflow:hidden; }
 .slide-cover.phase3 { background:linear-gradient(135deg,#4c1d95 0%,#7c3aed 50%,#6d28d9 100%); }
 
 .slide-content {
-  background:#fff; padding:72px 100px;
+  background:#fff; padding:60px 80px;
   display:flex; flex-direction:column;
 }
+.slide-content > .grid-2,
+.slide-content > .grid-3 { flex:1; }
 .slide-workbook {
-  background:#1e293b; padding:100px 100px 72px; color:#e2e8f0;
+  background:#1e293b; padding:72px 80px 56px; color:#e2e8f0;
   display:flex; flex-direction:column;
 }
+.slide-workbook > .grid-2,
+.slide-workbook > .grid-3 { flex:1; }
 .slide-workbook::before {
   content:'WORKBOOK';
   position:absolute; top:0; left:0; right:0;
@@ -975,61 +979,61 @@ body { overflow:hidden; }
     <span class="tag tag-gray" style="font-size:14px;">WORKBOOK</span>
   </div>
   <div class="slide-title">경쟁사 분석 + SWOT 워크북</div>
-  <div class="grid-2" style="margin-top:16px;gap:24px;">
-    <div>
-      <div class="wb-field" data-label="포지셔닝맵 (2x2)" style="min-height:240px;">
-        <div style="position:relative;width:100%;height:200px;">
+  <div class="grid-2" style="margin-top:12px;gap:24px;">
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="wb-field" data-label="포지셔닝맵 (2x2)" style="flex:2;display:flex;align-items:center;justify-content:center;">
+        <div style="position:relative;width:100%;height:100%;min-height:200px;">
           <div style="position:absolute;width:100%;height:2px;background:#cbd5e1;top:50%;"></div>
           <div style="position:absolute;height:100%;width:2px;background:#cbd5e1;left:50%;"></div>
-          <div class="wb-hint" style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:12px;">축 A: ___</div>
-          <div class="wb-hint" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:12px;">___</div>
-          <div class="wb-hint" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:12px;">축 B: ___</div>
-          <div class="wb-hint" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:12px;">___</div>
+          <div class="wb-hint" style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:13px;">축 A: ___</div>
+          <div class="wb-hint" style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-size:13px;">___</div>
+          <div class="wb-hint" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-size:13px;">축 B: ___</div>
+          <div class="wb-hint" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:13px;">___</div>
         </div>
       </div>
-      <div class="wb-field" data-label="벤치마킹 대상 (4~5개)" style="margin-top:16px;min-height:120px;">
-        <div style="display:flex;gap:8px;">
-          <div style="flex:1;height:80px;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 1</span></div>
-          <div style="flex:1;height:80px;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 2</span></div>
-          <div style="flex:1;height:80px;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 3</span></div>
-          <div style="flex:1;height:80px;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 4</span></div>
+      <div class="wb-field" data-label="벤치마킹 대상 (4~5개)" style="flex:1;">
+        <div style="display:flex;gap:10px;height:100%;">
+          <div style="flex:1;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;min-height:80px;"><span class="wb-hint" style="font-size:14px;">경쟁사 1</span></div>
+          <div style="flex:1;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 2</span></div>
+          <div style="flex:1;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 3</span></div>
+          <div style="flex:1;background:#f1f5f9;border-radius:8px;display:flex;align-items:center;justify-content:center;"><span class="wb-hint" style="font-size:14px;">경쟁사 4</span></div>
         </div>
       </div>
     </div>
-    <div>
-      <div class="wb-field" data-label="SWOT Analysis" style="min-height:240px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-          <div style="background:#dbeafe;padding:16px;border-radius:8px;min-height:100px;">
-            <div style="font-size:15px;font-weight:700;color:#1e40af;">S (강점)</div>
+    <div style="display:flex;flex-direction:column;gap:16px;">
+      <div class="wb-field" data-label="SWOT Analysis" style="flex:2;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:100%;">
+          <div style="background:#dbeafe;padding:20px;border-radius:10px;">
+            <div style="font-size:16px;font-weight:700;color:#1e40af;">S (강점)</div>
             <div class="wb-hint" style="font-size:14px;margin-top:8px;">내부 + 긍정적</div>
           </div>
-          <div style="background:#fee2e2;padding:16px;border-radius:8px;min-height:100px;">
-            <div style="font-size:15px;font-weight:700;color:#991b1b;">W (약점)</div>
+          <div style="background:#fee2e2;padding:20px;border-radius:10px;">
+            <div style="font-size:16px;font-weight:700;color:#991b1b;">W (약점)</div>
             <div class="wb-hint" style="font-size:14px;margin-top:8px;">내부 + 부정적</div>
           </div>
-          <div style="background:#dcfce7;padding:16px;border-radius:8px;min-height:100px;">
-            <div style="font-size:15px;font-weight:700;color:#166534;">O (기회)</div>
+          <div style="background:#dcfce7;padding:20px;border-radius:10px;">
+            <div style="font-size:16px;font-weight:700;color:#166534;">O (기회)</div>
             <div class="wb-hint" style="font-size:14px;margin-top:8px;">외부 + 긍정적</div>
           </div>
-          <div style="background:#fef3c7;padding:16px;border-radius:8px;min-height:100px;">
-            <div style="font-size:15px;font-weight:700;color:#92400e;">T (위협)</div>
+          <div style="background:#fef3c7;padding:20px;border-radius:10px;">
+            <div style="font-size:16px;font-weight:700;color:#92400e;">T (위협)</div>
             <div class="wb-hint" style="font-size:14px;margin-top:8px;">외부 + 부정적</div>
           </div>
         </div>
       </div>
-      <div class="wb-field" data-label="SWOT Strategy" style="margin-top:16px;min-height:120px;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-          <div style="background:#f1f5f9;padding:12px;border-radius:8px;">
-            <div style="font-size:14px;font-weight:700;color:#475569;">SO 전략</div>
+      <div class="wb-field" data-label="SWOT Strategy" style="flex:1;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:100%;">
+          <div style="background:#f1f5f9;padding:14px;border-radius:8px;display:flex;align-items:center;">
+            <div style="font-size:15px;font-weight:700;color:#475569;">SO 전략</div>
           </div>
-          <div style="background:#f1f5f9;padding:12px;border-radius:8px;">
-            <div style="font-size:14px;font-weight:700;color:#475569;">ST 전략</div>
+          <div style="background:#f1f5f9;padding:14px;border-radius:8px;display:flex;align-items:center;">
+            <div style="font-size:15px;font-weight:700;color:#475569;">ST 전략</div>
           </div>
-          <div style="background:#f1f5f9;padding:12px;border-radius:8px;">
-            <div style="font-size:14px;font-weight:700;color:#475569;">WO 전략</div>
+          <div style="background:#f1f5f9;padding:14px;border-radius:8px;display:flex;align-items:center;">
+            <div style="font-size:15px;font-weight:700;color:#475569;">WO 전략</div>
           </div>
-          <div style="background:#f1f5f9;padding:12px;border-radius:8px;">
-            <div style="font-size:14px;font-weight:700;color:#475569;">WT 전략</div>
+          <div style="background:#f1f5f9;padding:14px;border-radius:8px;display:flex;align-items:center;">
+            <div style="font-size:15px;font-weight:700;color:#475569;">WT 전략</div>
           </div>
         </div>
       </div>
