@@ -313,6 +313,68 @@ body { overflow:hidden; }
 .divider-left.blue { background:linear-gradient(180deg,#1e3a8a,#2563eb); }
 .divider-left.teal { background:linear-gradient(180deg,#065f46,#0d9488); }
 .divider-left.purple { background:linear-gradient(180deg,#4c1d95,#7c3aed); }
+
+/* Sidebar */
+.sidebar-toggle {
+  position:fixed; top:24px; left:24px; z-index:2000;
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(255,255,255,.10); border:1px solid rgba(255,255,255,.15);
+  color:#fff; cursor:pointer; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:5px;
+  backdrop-filter:blur(8px); transition:all .2s;
+}
+.sidebar-toggle:hover { background:rgba(255,255,255,.22); transform:scale(1.05); }
+.sidebar-toggle span {
+  display:block; width:20px; height:2px; background:#fff;
+  border-radius:1px; transition:all .3s;
+}
+.sidebar-toggle.active span:nth-child(1) { transform:rotate(45deg) translate(5px,5px); }
+.sidebar-toggle.active span:nth-child(2) { opacity:0; }
+.sidebar-toggle.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-5px); }
+.sidebar-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.5);
+  z-index:1500; opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.sidebar-overlay.open { opacity:1; pointer-events:auto; }
+.sidebar {
+  position:fixed; top:0; left:0; bottom:0; width:380px;
+  background:#0f172a; z-index:1800;
+  transform:translateX(-100%); transition:transform .3s cubic-bezier(.4,0,.2,1);
+  overflow-y:auto; border-right:1px solid rgba(255,255,255,.08);
+  scrollbar-width:thin; scrollbar-color:rgba(255,255,255,.15) transparent;
+}
+.sidebar.open { transform:translateX(0); }
+.sidebar-header {
+  padding:28px 28px 20px; border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky; top:0; background:#0f172a; z-index:1;
+}
+.sidebar-header h2 { font-size:22px; font-weight:900; color:#f8fafc; margin:0; letter-spacing:-.5px; }
+.sidebar-header p { font-size:13px; color:#64748b; margin-top:4px; }
+.sidebar-phase { padding:20px 28px 8px; }
+.sidebar-phase-title {
+  font-size:12px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; margin-bottom:4px;
+  padding-bottom:8px; border-bottom:2px solid;
+}
+.sidebar-phase-title.p1 { color:#60a5fa; border-color:#3b82f6; }
+.sidebar-phase-title.p2 { color:#5eead4; border-color:#14b8a6; }
+.sidebar-phase-title.p3 { color:#c4b5fd; border-color:#8b5cf6; }
+.sidebar-item {
+  display:flex; align-items:center; gap:12px;
+  padding:11px 28px; cursor:pointer; transition:all .15s;
+  border-left:3px solid transparent;
+}
+.sidebar-item:hover { background:rgba(255,255,255,.06); border-left-color:rgba(255,255,255,.3); }
+.sidebar-item-num {
+  width:28px; height:28px; border-radius:8px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:13px; font-weight:800; flex-shrink:0;
+}
+.sidebar-item-num.p1 { background:rgba(59,130,246,.2); color:#60a5fa; }
+.sidebar-item-num.p2 { background:rgba(20,184,166,.2); color:#5eead4; }
+.sidebar-item-num.p3 { background:rgba(139,92,246,.2); color:#c4b5fd; }
+.sidebar-item-text { font-size:15px; font-weight:500; color:#94a3b8; line-height:1.4; }
+.sidebar-item:hover .sidebar-item-text { color:#f1f5f9; }
 </style>
 </head>
 <body>
@@ -2277,6 +2339,44 @@ body { overflow:hidden; }
 
 </div><!-- /slides-wrapper -->
 
+<!-- Sidebar -->
+<button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</button>
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <h2>Re:teraction</h2>
+    <p>AI 서비스 기획 워크북</p>
+  </div>
+
+  <div class="sidebar-phase">
+    <div class="sidebar-phase-title p1">PHASE 1 &middot; DISCOVER</div>
+  </div>
+  <div class="sidebar-item" onclick="sidebarGo(1)"><div class="sidebar-item-num p1">01</div><div class="sidebar-item-text">표지</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(2)"><div class="sidebar-item-num p1">02</div><div class="sidebar-item-text">목차</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(3)"><div class="sidebar-item-num p1">03</div><div class="sidebar-item-text">이 워크북의 목표</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(5)"><div class="sidebar-item-num p1">05</div><div class="sidebar-item-text">시장 분석 &mdash; 트렌드 리서치</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(8)"><div class="sidebar-item-num p1">08</div><div class="sidebar-item-text">시장 분석 &mdash; 경쟁사 분석</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(13)"><div class="sidebar-item-num p1">13</div><div class="sidebar-item-text">시장 분석 &mdash; SWOT 분석</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(17)"><div class="sidebar-item-num p1">17</div><div class="sidebar-item-text">시장 분석 &mdash; 시장 기회 정의</div></div>
+
+  <div class="sidebar-phase">
+    <div class="sidebar-phase-title p2">PHASE 2 &middot; DEFINE</div>
+  </div>
+  <div class="sidebar-item" onclick="sidebarGo(22)"><div class="sidebar-item-num p2">22</div><div class="sidebar-item-text">사용자 조사 &mdash; 페르소나 설계</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(25)"><div class="sidebar-item-num p2">25</div><div class="sidebar-item-text">사용자 조사 &mdash; 여정 맵</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(29)"><div class="sidebar-item-num p2">29</div><div class="sidebar-item-text">사용자 조사 &mdash; 문제 정의</div></div>
+
+  <div class="sidebar-phase">
+    <div class="sidebar-phase-title p3">PHASE 3 &middot; DEVELOP</div>
+  </div>
+  <div class="sidebar-item" onclick="sidebarGo(32)"><div class="sidebar-item-num p3">32</div><div class="sidebar-item-text">서비스 구체화 &mdash; 핵심 기능 정의</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(35)"><div class="sidebar-item-num p3">35</div><div class="sidebar-item-text">서비스 구체화 &mdash; 정보 구조 설계</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(39)"><div class="sidebar-item-num p3">39</div><div class="sidebar-item-text">서비스 구체화 &mdash; 와이어프레임</div></div>
+  <div class="sidebar-item" onclick="sidebarGo(42)"><div class="sidebar-item-num p3">42</div><div class="sidebar-item-text">서비스 구체화 &mdash; 프로토타입</div></div>
+</nav>
+
 <!-- Navigation -->
 <button class="nav-arrow prev" id="prevBtn" onclick="changeSlide(-1)">&#9664;</button>
 <button class="nav-arrow next" id="nextBtn" onclick="changeSlide(1)">&#9654;</button>
@@ -2326,6 +2426,16 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
   if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
 });
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('open');
+  document.getElementById('sidebarToggle').classList.toggle('active');
+}
+function sidebarGo(page) {
+  toggleSidebar();
+  goToSlide(page);
+}
 
 showSlide(0);
 </script>
